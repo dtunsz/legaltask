@@ -17,27 +17,12 @@ export default {
     name: 'App',
     data() {
         return{
-            isLoading: true,
-            agents: [],
-            logs: [],
-            resolutions: []
+            isLoading: false,
+            agents: this.$store.state.agents,
+            logs: this.$store.state.logs,
+            resolutions: this.$store.state.resolutions,
         }
     },
-    created() {
-        Promise.all([
-            fetch("http://localhost:3000/").then(response => response.json()),
-            fetch("http://localhost:3000/logs").then(response => response.json()),
-            fetch("http://localhost:3000/resolutions").then(response => response.json())
-        ]).then(responses => {
-            this.agents = responses[0];
-            this.logs = responses[1];
-            this.resolutions = responses[2];
-            this.isLoading = false;
-        }).catch(error => {
-            console.error('Unable to fetch data', error)
-            this.isLoading = false;
-        });
-    }
 }
 </script>
 
