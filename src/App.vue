@@ -4,7 +4,6 @@
       <router-link to="/">Home</router-link>
     </div>
     <router-view
-        v-if="!isLoading"
         :agents="agents"
         :logs="logs"
         :resolutions="resolutions"
@@ -17,7 +16,6 @@ export default {
     name: 'App',
     data() {
         return{
-            isLoading: false,
             agents: this.$store.state.agents,
             logs: this.$store.state.logs,
             resolutions: this.$store.state.resolutions,
